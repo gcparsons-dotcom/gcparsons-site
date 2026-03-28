@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G. Curtis Parsons</title>
+  <meta name="description" content="Official author site for G. Curtis Parsons." />
+  <style>
+    :root{
+      --bg:#060606;
+      --panel:#0f0f10;
+      --panel-2:#151516;
+      --text:#ece8e2;
+      --muted:#b8afa4;
+      --line:rgba(255,255,255,.08);
+      --accent:#d7c8ae;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.035), transparent 32%),
+        linear-gradient(180deg,#090909 0%, #050505 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(1180px, calc(100% - 32px)); margin:0 auto}
+    .nav{
+      position:sticky; top:0; z-index:40;
+      backdrop-filter: blur(14px);
+      background:rgba(6,6,6,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:72px; gap:20px;
+    }
+    .brand{
+      font-size:1.25rem; font-weight:700; letter-spacing:.04em;
+      white-space:nowrap;
+    }
+    .nav-links{
+      display:flex; gap:20px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:.95rem;
+    }
+    .nav-links a:hover{color:var(--text)}
+    .hero{
+      position:relative;
+      padding:88px 0 68px;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,.05), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 45%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.15fr .85fr; gap:40px; align-items:center;
+    }
+    .eyebrow{
+      color:var(--muted); text-transform:uppercase; letter-spacing:.18em;
+      font-size:.74rem; margin-bottom:18px;
+    }
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(2.6rem, 7vw, 5.2rem);
+      line-height:.94;
+      letter-spacing:.01em;
+    }
+    .hero-copy{
+      max-width:700px; color:var(--muted); font-size:1.08rem; line-height:1.75;
+    }
+    .hero-actions{
+      display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:48px; padding:0 18px; border-radius:999px;
+      border:1px solid var(--line); box-shadow:var(--shadow);
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+      font-size:.96rem;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.18)}
+    .btn-primary{background:var(--text); color:#111}
+    .btn-secondary{background:rgba(255,255,255,.03)}
+    .hero-card{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .scrabble-row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .tile{
+      width:50px; height:50px;
+      border-radius:9px;
+      display:grid; place-items:center;
+      font-weight:700; font-size:1.3rem;
+      color:#2b241c;
+      background:
+        linear-gradient(180deg, #e2d1b2 0%, #ceb893 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.45),
+        inset 0 -8px 18px rgba(60,40,15,.16),
+        0 10px 22px rgba(0,0,0,.28);
+      transform:rotate(var(--r, 0deg));
+      position:relative;
+      overflow:hidden;
+    }
+    .tile::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 24% 22%, rgba(255,255,255,.35), transparent 18%),
+        linear-gradient(135deg, transparent 0 45%, rgba(80,55,25,.17) 47%, transparent 49% 100%),
+        linear-gradient(45deg, transparent 0 65%, rgba(90,60,28,.12) 67%, transparent 69% 100%);
+      mix-blend-mode:multiply;
+      opacity:.8;
+    }
+    .tile:nth-child(1){--r:-5deg}
+    .tile:nth-child(2){--r:2deg}
+    .tile:nth-child(3){--r:-2deg}
+    .tile:nth-child(4){--r:4deg}
+    .tile:nth-child(5){--r:-3deg}
+    .tile:nth-child(6){--r:3deg}
+    .tile:nth-child(7){--r:-4deg}
+    .quote{
+      color:var(--text);
+      font-size:1.05rem;
+      line-height:1.7;
+      margin:14px 0 0;
+    }
+    .section{
+      padding:28px 0 68px;
+    }
+    .section-head{
+      display:flex; align-items:end; justify-content:space-between;
+      gap:20px; margin-bottom:24px;
+    }
+    h2{
+      margin:0; font-size:clamp(1.8rem, 4vw, 2.6rem);
+    }
+    .section-note{color:var(--muted); max-width:600px; line-height:1.65}
+    .books{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+    }
+    .book{
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:420px;
+      display:flex; flex-direction:column;
+    }
+    .cover{
+      min-height:255px;
+      display:flex; align-items:end;
+      padding:20px;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,.12), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.28)),
+        linear-gradient(180deg, #1a1a1b 0%, #0c0c0d 100%);
+      position:relative;
+      border-bottom:1px solid var(--line);
+    }
+    .cover::after{
+      content:"Cover art placeholder";
+      font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.42);
+      position:absolute; inset:auto 20px 18px auto;
+    }
+    .cover .cover-title{
+      font-size:1.35rem; max-width:70%; line-height:1.1;
+      text-shadow:0 2px 20px rgba(0,0,0,.4);
+    }
+    .book-body{
+      padding:20px 20px 22px; display:flex; flex-direction:column; gap:14px; flex:1;
+    }
+    .book-kicker{color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.16em}
+    .book p{margin:0; color:var(--muted); line-height:1.68; font-size:.95rem}
+    .read-more{
+      margin-top:auto;
+      align-self:flex-start;
+      color:rgba(236,232,226,.46);
+      border-bottom:1px solid transparent;
+      transition:color .18s ease, border-color .18s ease;
+      font-size:.92rem;
+    }
+    .book:hover .read-more{color:var(--text); border-color:rgba(236,232,226,.45)}
+    .two-col{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .panel h3{margin:0 0 14px; font-size:1.45rem}
+    .panel p{margin:0; color:var(--muted); line-height:1.72}
+    .signals{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px;
+    }
+    .signal{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      background:rgba(255,255,255,.02);
+    }
+    .signal strong{display:block; margin-bottom:8px}
+    .footer{
+      padding:0 0 46px;
+      color:rgba(236,232,226,.62);
+    }
+    .footer .panel{
+      display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap;
+    }
+    .muted{color:var(--muted)}
+    @media (max-width: 1060px){
+      .books{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .nav-inner{min-height:64px}
+      .nav-links{gap:14px; font-size:.88rem}
+      .books,.two-col,.signals{grid-template-columns:1fr}
+      .hero{padding:68px 0 48px}
+      .hero-card{padding:22px}
+      .tile{width:44px; height:44px; font-size:1.15rem}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">G. Curtis Parsons</div>
+      <div class="nav-links">
+        <a href="#books">Books</a>
+        <a href="#series">Series</a>
+        <a href="#author">Author</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <section>
+        <div class="eyebrow">Literary Psychological Thriller</div>
+        <h1>Stories built to leave a mark after the page goes dark.</h1>
+        <div class="hero-copy">
+          A cinematic author site for a four-book psychological thriller sequence built around fracture, perception, and the feeling of something happening just beyond explanation.
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#books">Explore Books</a>
+          <a class="btn btn-secondary" href="#author">About the Author</a>
+        </div>
+      </section>
+
+      <aside class="hero-card" aria-label="Series mood card">
+        <div class="scrabble-row" aria-hidden="true">
+          <div class="tile">S</div>
+          <div class="tile">Y</div>
+          <div class="tile">S</div>
+          <div class="tile">N</div>
+          <div class="tile">O</div>
+          <div class="tile">D</div>
+          <div class="tile">E</div>
+        </div>
+        <div class="quote">
+          “The reader doesn’t need to know what happened. They need to feel that something did.”
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="books">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Books</h2>
+          </div>
+          <div class="section-note">
+            The site is now live. Cover art, taglines, excerpts, and final visual assets can be swapped into these placeholders as the public layer is refined.
+          </div>
+        </div>
+
+        <div class="books">
+          <article class="book">
+            <div class="cover"><div class="cover-title">Ryan’s Calling</div></div>
+            <div class="book-body">
+              <div class="book-kicker">Book One</div>
+              <p>Immediate, unsettling, and built without reflective distance. The story moves in real time and lets the unease arrive before the explanation ever can.</p>
+              <a class="read-more" href="#contact">Read more</a>
+            </div>
+          </article>
+
+          <article class="book">
+            <div class="cover"><div class="cover-title">Pieces</div></div>
+            <div class="book-body">
+              <div class="book-kicker">Book Two</div>
+              <p>Ordered, analytical, and evidence-driven. Structure becomes pressure as the fragments begin forming a pattern that refuses to remain contained.</p>
+              <a class="read-more" href="#contact">Read more</a>
+            </div>
+          </article>
+
+          <article class="book">
+            <div class="cover"><div class="cover-title">Out Here, Monsters</div></div>
+            <div class="book-body">
+              <div class="book-kicker">Book Three</div>
+              <p>Reflective, interpretive, and emotionally reconstructed. Silence can’t hide everything, and absence becomes part of the story being told.</p>
+              <a class="read-more" href="#contact">Read more</a>
+            </div>
+          </article>
+
+          <article class="book">
+            <div class="cover"><div class="cover-title">Ruby’s Roses</div></div>
+            <div class="book-body">
+              <div class="book-kicker">Book Four</div>
+              <p>Fragmented, weighted, and existential. The final book turns toward implication, collapse, and the emotional cost of meaning that refuses to settle.</p>
+              <a class="read-more" href="#contact">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="series">
+      <div class="wrap two-col">
+        <div class="panel">
+          <h3>The Series</h3>
+          <p>
+            Four books. Four consciousness models. One underlying reality approached from different angles: real-time system processing, analytical reconstruction, interpretive emotional reconstruction, and internal collapse through weight and meaning.
+          </p>
+          <div class="signals">
+            <div class="signal">
+              <strong>Real Time</strong>
+              Immediate unease without explanation.
+            </div>
+            <div class="signal">
+              <strong>Reconstruction</strong>
+              Order, evidence, and pattern pressure.
+            </div>
+            <div class="signal">
+              <strong>Collapse</strong>
+              Meaning carries more weight than event.
+            </div>
+          </div>
+        </div>
+        <div class="panel" id="author">
+          <h3>Author</h3>
+          <p>
+            G. Curtis Parsons writes cinematic literary psychological thrillers designed to privilege tone, pressure, and aftermath over clean explanation. This homepage is the live public layer of SYS NODE and is structured to evolve into the full author platform.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap">
+      <div class="panel">
+        <div>
+          <strong>G. Curtis Parsons</strong><br />
+          <span class="muted">Official author site — public layer online.</span>
+        </div>
+        <div class="muted">gcparsons.ca</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
