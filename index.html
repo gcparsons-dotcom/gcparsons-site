@@ -13,6 +13,7 @@
       --muted:#b8afa4;
       --line:rgba(255,255,255,.08);
       --shadow:0 20px 60px rgba(0,0,0,.45);
+      --deep-shadow:0 30px 80px rgba(0,0,0,.62);
     }
 
     *{box-sizing:border-box}
@@ -79,7 +80,7 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
+      grid-template-columns:1.02fr .98fr;
       gap:40px;
       align-items:center;
     }
@@ -94,7 +95,7 @@
 
     h1{
       margin:0 0 18px;
-      font-size:clamp(2.6rem, 7vw, 5.1rem);
+      font-size:clamp(2.6rem, 7vw, 5rem);
       line-height:.94;
       letter-spacing:.01em;
     }
@@ -140,68 +141,98 @@
       background:rgba(255,255,255,.03);
     }
 
-    .hero-board-shell{
+    .hero-scene-shell{
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
       border:1px solid var(--line);
       border-radius:28px;
-      padding:20px;
-      box-shadow:var(--shadow);
+      padding:18px;
+      box-shadow:var(--deep-shadow);
       overflow:hidden;
     }
 
-    .scrabble-board{
+    .hero-scene{
       position:relative;
-      border-radius:22px;
-      min-height:420px;
+      min-height:470px;
+      border-radius:24px;
       overflow:hidden;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.5)),
-        url("images/textures/scrabble-board.jpg") center/cover no-repeat,
-        linear-gradient(135deg, #171311 0%, #0e0c0c 100%);
-      border:1px solid rgba(255,255,255,.05);
-      box-shadow:inset 0 0 60px rgba(0,0,0,.45);
+        radial-gradient(circle at 50% 8%, rgba(255,255,255,.05), transparent 26%),
+        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.55)),
+        linear-gradient(135deg, #1a1110 0%, #0d0a0a 45%, #060606 100%);
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:inset 0 0 80px rgba(0,0,0,.55);
     }
 
-    .scrabble-board::before{
+    /* desk surface */
+    .hero-scene::before{
       content:"";
       position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:48px 48px;
-      opacity:.22;
+      inset:auto 0 0 0;
+      height:62%;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.18) 12%, rgba(0,0,0,.42) 100%),
+        linear-gradient(90deg,
+          rgba(89,53,37,.16) 0%,
+          rgba(67,39,28,.2) 18%,
+          rgba(94,58,41,.15) 36%,
+          rgba(74,45,32,.22) 56%,
+          rgba(86,51,36,.14) 76%,
+          rgba(64,38,27,.23) 100%
+        ),
+        linear-gradient(180deg, #3b251d 0%, #281711 100%);
+      opacity:.92;
+      filter:saturate(.85) brightness(.85);
       pointer-events:none;
     }
 
-    .board-overlay{
-      position:relative;
-      z-index:2;
-      min-height:420px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      padding:28px 20px 34px;
-      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.34));
+    /* petal paper texture */
+    .hero-scene::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.22)),
+        url("images/textures/paper-petals-master.png") center/cover no-repeat;
+      mix-blend-mode:screen;
+      opacity:.33;
+      pointer-events:none;
     }
 
-    .scrabble-row{
+    .scene-inner{
+      position:relative;
+      z-index:2;
+      min-height:470px;
+      padding:26px 24px 24px;
+    }
+
+    .scene-glow{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 70% 24%, rgba(138,24,38,.15), transparent 20%),
+        radial-gradient(circle at 28% 22%, rgba(255,215,180,.06), transparent 18%);
+      pointer-events:none;
+    }
+
+    .scrabble-area{
+      position:absolute;
+      left:34px;
+      right:110px;
+      top:48px;
       display:flex;
-      justify-content:center;
-      gap:10px;
       flex-wrap:wrap;
-      margin-bottom:24px;
+      gap:10px;
+      max-width:420px;
     }
 
     .tile{
-      width:54px;
-      height:54px;
+      width:56px;
+      height:56px;
       border-radius:10px;
       display:grid;
       place-items:center;
       font-weight:700;
-      font-size:1.45rem;
+      font-size:1.5rem;
       color:#2b241c;
       background:
         linear-gradient(180deg, #e2d1b2 0%, #ceb893 100%);
@@ -234,13 +265,98 @@
     .tile:nth-child(6){--r:3deg}
     .tile:nth-child(7){--r:-4deg}
 
-    .board-quote{
-      text-align:center;
-      font-size:1.05rem;
-      line-height:1.7;
-      max-width:540px;
+    .desk-note{
+      position:absolute;
+      left:34px;
+      right:34px;
+      bottom:34px;
+      max-width:520px;
       color:var(--text);
+      font-size:1.02rem;
+      line-height:1.7;
       text-shadow:0 2px 18px rgba(0,0,0,.5);
+    }
+
+    .desk-note strong{
+      font-weight:700;
+    }
+
+    .rose-cluster{
+      position:absolute;
+      right:24px;
+      bottom:22px;
+      width:180px;
+      height:180px;
+      pointer-events:none;
+      opacity:.92;
+      filter:drop-shadow(0 12px 26px rgba(0,0,0,.55));
+    }
+
+    .rose{
+      position:absolute;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 34% 32%, rgba(255,255,255,.08), transparent 20%),
+        radial-gradient(circle at center, #7e0e20 0%, #5a0817 42%, #2c020b 75%, #130104 100%);
+      box-shadow:
+        inset 0 4px 10px rgba(255,255,255,.04),
+        inset 0 -12px 20px rgba(0,0,0,.35);
+    }
+
+    .rose.one{
+      width:84px;
+      height:84px;
+      right:48px;
+      bottom:42px;
+    }
+
+    .rose.two{
+      width:60px;
+      height:60px;
+      right:10px;
+      bottom:16px;
+      opacity:.82;
+    }
+
+    .rose.three{
+      width:44px;
+      height:44px;
+      right:98px;
+      bottom:4px;
+      opacity:.78;
+    }
+
+    .petal{
+      position:absolute;
+      background:
+        linear-gradient(180deg, #8a1428 0%, #540916 100%);
+      border-radius:60% 40% 65% 35% / 55% 35% 65% 45%;
+      box-shadow:0 8px 18px rgba(0,0,0,.35);
+      opacity:.9;
+    }
+
+    .petal.a{
+      width:22px;
+      height:14px;
+      right:126px;
+      bottom:66px;
+      transform:rotate(18deg);
+    }
+
+    .petal.b{
+      width:18px;
+      height:12px;
+      right:146px;
+      bottom:40px;
+      transform:rotate(-18deg);
+    }
+
+    .petal.c{
+      width:16px;
+      height:11px;
+      right:74px;
+      bottom:4px;
+      transform:rotate(28deg);
     }
 
     .section{
@@ -484,20 +600,26 @@
         justify-content:center;
       }
 
-      .hero-board-shell{
-        padding:14px;
+      .hero-scene-shell{
+        padding:12px;
       }
 
-      .scrabble-board,
-      .board-overlay{
+      .hero-scene,
+      .scene-inner{
         min-height:auto;
       }
 
-      .board-overlay{
-        padding:20px 14px 26px;
+      .scene-inner{
+        padding:18px 14px 22px;
       }
 
-      .scrabble-row{
+      .scrabble-area{
+        position:relative;
+        left:auto;
+        right:auto;
+        top:auto;
+        max-width:none;
+        justify-content:center;
         gap:8px;
         margin-bottom:18px;
       }
@@ -505,12 +627,69 @@
       .tile{
         width:42px;
         height:42px;
-        font-size:1.15rem;
+        font-size:1.12rem;
       }
 
-      .board-quote{
+      .desk-note{
+        position:relative;
+        left:auto;
+        right:auto;
+        bottom:auto;
+        max-width:none;
+        text-align:center;
         font-size:.95rem;
         line-height:1.6;
+        padding:0 2px;
+      }
+
+      .rose-cluster{
+        width:120px;
+        height:120px;
+        right:8px;
+        bottom:8px;
+        opacity:.85;
+      }
+
+      .rose.one{
+        width:58px;
+        height:58px;
+        right:28px;
+        bottom:28px;
+      }
+
+      .rose.two{
+        width:42px;
+        height:42px;
+        right:2px;
+        bottom:8px;
+      }
+
+      .rose.three{
+        width:30px;
+        height:30px;
+        right:66px;
+        bottom:0;
+      }
+
+      .petal.a{
+        width:16px;
+        height:10px;
+        right:82px;
+        bottom:40px;
+      }
+
+      .petal.b{
+        width:14px;
+        height:9px;
+        right:96px;
+        bottom:22px;
+      }
+
+      .petal.c{
+        width:12px;
+        height:8px;
+        right:44px;
+        bottom:0;
       }
 
       .section{
@@ -610,10 +789,11 @@
         </div>
       </section>
 
-      <aside class="hero-board-shell" aria-label="Creepy Scrabble Hero Board">
-        <div class="scrabble-board">
-          <div class="board-overlay">
-            <div class="scrabble-row" aria-hidden="true">
+      <aside class="hero-scene-shell" aria-label="Creepy Scrabble Desk Hero">
+        <div class="hero-scene">
+          <div class="scene-glow"></div>
+          <div class="scene-inner">
+            <div class="scrabble-area" aria-hidden="true">
               <div class="tile">S</div>
               <div class="tile">Y</div>
               <div class="tile">S</div>
@@ -622,8 +802,18 @@
               <div class="tile">D</div>
               <div class="tile">E</div>
             </div>
-            <div class="board-quote">
-              “The reader doesn’t need to know what happened. They need to feel that something did.”
+
+            <div class="desk-note">
+              <strong>“The reader doesn’t need to know what happened.</strong> They need to feel that something did.”
+            </div>
+
+            <div class="rose-cluster" aria-hidden="true">
+              <div class="rose one"></div>
+              <div class="rose two"></div>
+              <div class="rose three"></div>
+              <div class="petal a"></div>
+              <div class="petal b"></div>
+              <div class="petal c"></div>
             </div>
           </div>
         </div>
