@@ -12,8 +12,11 @@
       --text:#ece8e2;
       --muted:#b8afa4;
       --line:rgba(255,255,255,.08);
+      --gold:#d7b37a;
+      --tile:#d7b37a;
+      --tile-text:#2c241a;
       --shadow:0 20px 60px rgba(0,0,0,.45);
-      --deep-shadow:0 30px 80px rgba(0,0,0,.62);
+      --deep-shadow:0 30px 90px rgba(0,0,0,.68);
     }
 
     *{box-sizing:border-box}
@@ -33,16 +36,16 @@
     img{max-width:100%;display:block}
 
     .wrap{
-      width:min(1180px, calc(100% - 32px));
+      width:min(1240px, calc(100% - 32px));
       margin:0 auto;
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:60;
       backdrop-filter:blur(14px);
-      background:rgba(6,6,6,.84);
+      background:rgba(6,6,6,.88);
       border-bottom:1px solid var(--line);
     }
 
@@ -50,7 +53,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      min-height:72px;
+      min-height:74px;
       gap:20px;
     }
 
@@ -63,7 +66,7 @@
 
     .nav-links{
       display:flex;
-      gap:20px;
+      gap:22px;
       flex-wrap:wrap;
       align-items:center;
       color:var(--muted);
@@ -74,13 +77,13 @@
 
     .hero{
       position:relative;
-      padding:88px 0 68px;
+      padding:72px 0 58px;
       overflow:hidden;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.02fr .98fr;
+      grid-template-columns:.9fr 1.1fr;
       gap:40px;
       align-items:center;
     }
@@ -95,13 +98,13 @@
 
     h1{
       margin:0 0 18px;
-      font-size:clamp(2.6rem, 7vw, 5rem);
+      font-size:clamp(2.5rem, 7vw, 5rem);
       line-height:.94;
       letter-spacing:.01em;
     }
 
     .hero-copy{
-      max-width:700px;
+      max-width:680px;
       color:var(--muted);
       font-size:1.05rem;
       line-height:1.75;
@@ -152,40 +155,38 @@
 
     .hero-scene{
       position:relative;
-      min-height:470px;
+      min-height:620px;
       border-radius:24px;
       overflow:hidden;
       background:
-        radial-gradient(circle at 50% 8%, rgba(255,255,255,.05), transparent 26%),
-        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.55)),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,.04), transparent 24%),
+        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.56)),
         linear-gradient(135deg, #1a1110 0%, #0d0a0a 45%, #060606 100%);
       border:1px solid rgba(255,255,255,.06);
       box-shadow:inset 0 0 80px rgba(0,0,0,.55);
     }
 
-    /* desk surface */
     .hero-scene::before{
       content:"";
       position:absolute;
       inset:auto 0 0 0;
-      height:62%;
+      height:72%;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.18) 12%, rgba(0,0,0,.42) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.12) 10%, rgba(0,0,0,.42) 100%),
         linear-gradient(90deg,
-          rgba(89,53,37,.16) 0%,
-          rgba(67,39,28,.2) 18%,
-          rgba(94,58,41,.15) 36%,
-          rgba(74,45,32,.22) 56%,
-          rgba(86,51,36,.14) 76%,
-          rgba(64,38,27,.23) 100%
+          rgba(89,53,37,.18) 0%,
+          rgba(67,39,28,.22) 18%,
+          rgba(94,58,41,.16) 36%,
+          rgba(74,45,32,.24) 56%,
+          rgba(86,51,36,.15) 76%,
+          rgba(64,38,27,.24) 100%
         ),
-        linear-gradient(180deg, #3b251d 0%, #281711 100%);
-      opacity:.92;
-      filter:saturate(.85) brightness(.85);
+        linear-gradient(180deg, #3a241c 0%, #26160f 100%);
+      opacity:.95;
+      filter:saturate(.8) brightness(.8);
       pointer-events:none;
     }
 
-    /* petal paper texture */
     .hero-scene::after{
       content:"";
       position:absolute;
@@ -194,55 +195,60 @@
         linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.22)),
         url("images/textures/paper-petals-master.png") center/cover no-repeat;
       mix-blend-mode:screen;
-      opacity:.33;
+      opacity:.28;
       pointer-events:none;
     }
 
     .scene-inner{
       position:relative;
       z-index:2;
-      min-height:470px;
-      padding:26px 24px 24px;
+      min-height:620px;
+      padding:34px 28px 28px;
     }
 
     .scene-glow{
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 70% 24%, rgba(138,24,38,.15), transparent 20%),
-        radial-gradient(circle at 28% 22%, rgba(255,215,180,.06), transparent 18%);
+        radial-gradient(circle at 18% 20%, rgba(175,75,38,.12), transparent 22%),
+        radial-gradient(circle at 78% 18%, rgba(123,14,28,.12), transparent 20%);
       pointer-events:none;
     }
 
-    .scrabble-area{
-      position:absolute;
-      left:34px;
-      right:110px;
-      top:48px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      max-width:420px;
+    .scene-tag{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:.76rem;
+      text-align:center;
+      font-weight:700;
+      margin-bottom:28px;
+    }
+
+    .crossword{
+      position:relative;
+      width:740px;
+      max-width:100%;
+      height:420px;
+      margin:0 auto;
     }
 
     .tile{
-      width:56px;
-      height:56px;
-      border-radius:10px;
+      position:absolute;
+      width:46px;
+      height:46px;
+      border-radius:8px;
       display:grid;
       place-items:center;
+      background:linear-gradient(180deg, #e2c289 0%, #caa16b 100%);
+      color:var(--tile-text);
       font-weight:700;
-      font-size:1.5rem;
-      color:#2b241c;
-      background:
-        linear-gradient(180deg, #e2d1b2 0%, #ceb893 100%);
+      font-size:1rem;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.45),
-        inset 0 -8px 18px rgba(60,40,15,.16),
-        0 10px 22px rgba(0,0,0,.28);
-      position:relative;
+        inset 0 -7px 16px rgba(60,40,15,.15),
+        0 10px 20px rgba(0,0,0,.28);
       overflow:hidden;
-      transform:rotate(var(--r, 0deg));
     }
 
     .tile::before{
@@ -257,38 +263,41 @@
       opacity:.82;
     }
 
-    .tile:nth-child(1){--r:-5deg}
-    .tile:nth-child(2){--r:2deg}
-    .tile:nth-child(3){--r:-2deg}
-    .tile:nth-child(4){--r:4deg}
-    .tile:nth-child(5){--r:-3deg}
-    .tile:nth-child(6){--r:3deg}
-    .tile:nth-child(7){--r:-4deg}
+    .cross-guide{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.03) 50%, transparent 50.2%),
+        linear-gradient(180deg, transparent 49.8%, rgba(255,255,255,.03) 50%, transparent 50.2%);
+      opacity:.35;
+      pointer-events:none;
+    }
 
     .desk-note{
       position:absolute;
-      left:34px;
-      right:34px;
-      bottom:34px;
-      max-width:520px;
+      left:28px;
+      right:28px;
+      bottom:28px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+    }
+
+    .desk-quote{
+      max-width:470px;
       color:var(--text);
-      font-size:1.02rem;
+      font-size:1rem;
       line-height:1.7;
       text-shadow:0 2px 18px rgba(0,0,0,.5);
     }
 
-    .desk-note strong{
-      font-weight:700;
-    }
-
     .rose-cluster{
-      position:absolute;
-      right:24px;
-      bottom:22px;
-      width:180px;
-      height:180px;
-      pointer-events:none;
-      opacity:.92;
+      position:relative;
+      width:190px;
+      height:170px;
+      flex:0 0 auto;
+      opacity:.94;
       filter:drop-shadow(0 12px 26px rgba(0,0,0,.55));
     }
 
@@ -304,60 +313,39 @@
     }
 
     .rose.one{
-      width:84px;
-      height:84px;
+      width:86px;
+      height:86px;
       right:48px;
       bottom:42px;
     }
 
     .rose.two{
-      width:60px;
-      height:60px;
-      right:10px;
-      bottom:16px;
+      width:62px;
+      height:62px;
+      right:8px;
+      bottom:18px;
       opacity:.82;
     }
 
     .rose.three{
       width:44px;
       height:44px;
-      right:98px;
-      bottom:4px;
+      right:102px;
+      bottom:2px;
       opacity:.78;
     }
 
     .petal{
       position:absolute;
-      background:
-        linear-gradient(180deg, #8a1428 0%, #540916 100%);
+      background:linear-gradient(180deg, #8a1428 0%, #540916 100%);
       border-radius:60% 40% 65% 35% / 55% 35% 65% 45%;
       box-shadow:0 8px 18px rgba(0,0,0,.35);
-      opacity:.9;
+      opacity:.92;
     }
 
-    .petal.a{
-      width:22px;
-      height:14px;
-      right:126px;
-      bottom:66px;
-      transform:rotate(18deg);
-    }
-
-    .petal.b{
-      width:18px;
-      height:12px;
-      right:146px;
-      bottom:40px;
-      transform:rotate(-18deg);
-    }
-
-    .petal.c{
-      width:16px;
-      height:11px;
-      right:74px;
-      bottom:4px;
-      transform:rotate(28deg);
-    }
+    .petal.a{width:22px;height:14px;right:128px;bottom:68px;transform:rotate(18deg)}
+    .petal.b{width:18px;height:12px;right:146px;bottom:38px;transform:rotate(-18deg)}
+    .petal.c{width:16px;height:11px;right:74px;bottom:4px;transform:rotate(28deg)}
 
     .section{
       padding:28px 0 68px;
@@ -550,6 +538,10 @@
     @media (max-width:1060px){
       .books{grid-template-columns:repeat(2,1fr)}
       .hero-grid{grid-template-columns:1fr}
+      .crossword{
+        transform:scale(.92);
+        transform-origin:top center;
+      }
     }
 
     @media (max-width:768px){
@@ -610,24 +602,25 @@
       }
 
       .scene-inner{
-        padding:18px 14px 22px;
+        padding:18px 12px 20px;
       }
 
-      .scrabble-area{
-        position:relative;
-        left:auto;
-        right:auto;
-        top:auto;
-        max-width:none;
-        justify-content:center;
-        gap:8px;
-        margin-bottom:18px;
+      .scene-tag{
+        font-size:.66rem;
+        margin-bottom:14px;
+      }
+
+      .crossword{
+        width:320px;
+        height:360px;
+        transform:none;
       }
 
       .tile{
-        width:42px;
-        height:42px;
-        font-size:1.12rem;
+        width:28px;
+        height:28px;
+        font-size:.72rem;
+        border-radius:6px;
       }
 
       .desk-note{
@@ -635,62 +628,30 @@
         left:auto;
         right:auto;
         bottom:auto;
+        display:block;
+        margin-top:6px;
+      }
+
+      .desk-quote{
         max-width:none;
         text-align:center;
-        font-size:.95rem;
-        line-height:1.6;
-        padding:0 2px;
+        font-size:.92rem;
+        line-height:1.55;
+        padding:0 4px;
       }
 
       .rose-cluster{
         width:120px;
         height:120px;
-        right:8px;
-        bottom:8px;
-        opacity:.85;
+        margin:14px auto 0;
       }
 
-      .rose.one{
-        width:58px;
-        height:58px;
-        right:28px;
-        bottom:28px;
-      }
-
-      .rose.two{
-        width:42px;
-        height:42px;
-        right:2px;
-        bottom:8px;
-      }
-
-      .rose.three{
-        width:30px;
-        height:30px;
-        right:66px;
-        bottom:0;
-      }
-
-      .petal.a{
-        width:16px;
-        height:10px;
-        right:82px;
-        bottom:40px;
-      }
-
-      .petal.b{
-        width:14px;
-        height:9px;
-        right:96px;
-        bottom:22px;
-      }
-
-      .petal.c{
-        width:12px;
-        height:8px;
-        right:44px;
-        bottom:0;
-      }
+      .rose.one{width:58px;height:58px;right:28px;bottom:28px}
+      .rose.two{width:42px;height:42px;right:2px;bottom:8px}
+      .rose.three{width:30px;height:30px;right:66px;bottom:0}
+      .petal.a{width:16px;height:10px;right:82px;bottom:40px}
+      .petal.b{width:14px;height:9px;right:96px;bottom:22px}
+      .petal.c{width:12px;height:8px;right:44px;bottom:0}
 
       .section{
         padding:18px 0 42px;
@@ -793,27 +754,92 @@
         <div class="hero-scene">
           <div class="scene-glow"></div>
           <div class="scene-inner">
-            <div class="scrabble-area" aria-hidden="true">
-              <div class="tile">S</div>
-              <div class="tile">Y</div>
-              <div class="tile">S</div>
-              <div class="tile">N</div>
-              <div class="tile">O</div>
-              <div class="tile">D</div>
-              <div class="tile">E</div>
+            <div class="scene-tag">THE SYSTEM IS FLAWED</div>
+
+            <div class="crossword" aria-hidden="true">
+              <div class="cross-guide"></div>
+
+              <!-- PSYCHOLOGICAL -->
+              <div class="tile" style="left:115px; top:58px;">P</div>
+              <div class="tile" style="left:161px; top:58px;">S</div>
+              <div class="tile" style="left:207px; top:58px;">Y</div>
+              <div class="tile" style="left:253px; top:58px;">C</div>
+              <div class="tile" style="left:299px; top:58px;">H</div>
+              <div class="tile" style="left:345px; top:58px;">O</div>
+              <div class="tile" style="left:391px; top:58px;">L</div>
+              <div class="tile" style="left:437px; top:58px;">O</div>
+              <div class="tile" style="left:483px; top:58px;">G</div>
+              <div class="tile" style="left:529px; top:58px;">I</div>
+              <div class="tile" style="left:575px; top:58px;">C</div>
+              <div class="tile" style="left:621px; top:58px;">A</div>
+              <div class="tile" style="left:667px; top:58px;">L</div>
+
+              <!-- THE vertical through H -->
+              <div class="tile" style="left:299px; top:12px;">T</div>
+              <div class="tile" style="left:299px; top:104px;">E</div>
+
+              <!-- SYSTEM vertical through S -->
+              <div class="tile" style="left:161px; top:104px;">Y</div>
+              <div class="tile" style="left:161px; top:150px;">S</div>
+              <div class="tile" style="left:161px; top:196px;">T</div>
+              <div class="tile" style="left:161px; top:242px;">E</div>
+              <div class="tile" style="left:161px; top:288px;">M</div>
+
+              <!-- OBSERVED -->
+              <div class="tile" style="left:23px;  top:242px;">O</div>
+              <div class="tile" style="left:69px;  top:242px;">B</div>
+              <div class="tile" style="left:115px; top:242px;">S</div>
+              <div class="tile" style="left:161px; top:242px;">E</div>
+              <div class="tile" style="left:207px; top:242px;">R</div>
+              <div class="tile" style="left:253px; top:242px;">V</div>
+              <div class="tile" style="left:299px; top:242px;">E</div>
+              <div class="tile" style="left:345px; top:242px;">D</div>
+
+              <!-- COGNITIVE vertical through I -->
+              <div class="tile" style="left:575px; top:104px;">O</div>
+              <div class="tile" style="left:575px; top:150px;">G</div>
+              <div class="tile" style="left:575px; top:196px;">N</div>
+              <div class="tile" style="left:575px; top:242px;">I</div>
+              <div class="tile" style="left:575px; top:288px;">T</div>
+              <div class="tile" style="left:575px; top:334px;">V</div>
+              <div class="tile" style="left:575px; top:380px;">E</div>
+
+              <!-- FRAGMENT vertical -->
+              <div class="tile" style="left:483px; top:242px;">F</div>
+              <div class="tile" style="left:483px; top:288px;">R</div>
+              <div class="tile" style="left:483px; top:334px;">A</div>
+              <div class="tile" style="left:483px; top:380px;">M</div>
+
+              <!-- POSITIONS -->
+              <div class="tile" style="left:437px; top:334px;">P</div>
+              <div class="tile" style="left:483px; top:334px;">O</div>
+              <div class="tile" style="left:529px; top:334px;">S</div>
+              <div class="tile" style="left:575px; top:334px;">I</div>
+              <div class="tile" style="left:621px; top:334px;">T</div>
+              <div class="tile" style="left:667px; top:334px;">I</div>
+              <div class="tile" style="left:713px; top:334px;">O</div>
+              <div class="tile" style="left:759px; top:334px;">N</div>
+              <div class="tile" style="left:805px; top:334px;">S</div>
+
+              <!-- FOUR vertical -->
+              <div class="tile" style="left:713px; top:288px;">F</div>
+              <div class="tile" style="left:713px; top:380px;">U</div>
+              <div class="tile" style="left:713px; top:426px;">R</div>
             </div>
 
             <div class="desk-note">
-              <strong>“The reader doesn’t need to know what happened.</strong> They need to feel that something did.”
-            </div>
+              <div class="desk-quote">
+                “The reader doesn’t need to know what happened. They need to feel that something did.”
+              </div>
 
-            <div class="rose-cluster" aria-hidden="true">
-              <div class="rose one"></div>
-              <div class="rose two"></div>
-              <div class="rose three"></div>
-              <div class="petal a"></div>
-              <div class="petal b"></div>
-              <div class="petal c"></div>
+              <div class="rose-cluster" aria-hidden="true">
+                <div class="rose one"></div>
+                <div class="rose two"></div>
+                <div class="rose three"></div>
+                <div class="petal a"></div>
+                <div class="petal b"></div>
+                <div class="petal c"></div>
+              </div>
             </div>
           </div>
         </div>
