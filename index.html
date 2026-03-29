@@ -246,6 +246,66 @@
       .hero-card{padding:22px}
       .tile{width:44px; height:44px; font-size:1.15rem}
     }
+    /* MOBILE FIXES */
+@media (max-width: 768px) {
+
+  /* NAVIGATION */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  /* HERO / CARDS */
+  .card {
+    padding: 16px;
+    margin: 10px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* AUTHOR SECTION */
+  .author img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .author p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* BOOK GRID */
+  .books {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .book img {
+    width: 100%;
+    height: auto;
+  }
+}
   </style>
 </head>
 <body>
