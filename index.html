@@ -650,6 +650,74 @@
         height:auto;
         max-height:360px;
       }
+
+      /* ===== MOBILE HERO FIX ===== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  line-height: 1.1;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.hero p {
+  text-align: center;
+  padding: 0 16px;
+}
+
+/* ===== SCRABBLE BOARD FIX ===== */
+
+.scrabble-board {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* DESKTOP keeps your layout */
+@media (min-width: 769px) {
+  .scrabble-tile {
+    position: absolute;
+  }
+}
+
+/* MOBILE switches to grid */
+@media (max-width: 768px) {
+
+  .scrabble-board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    justify-items: center;
+    padding: 20px;
+  }
+
+  .scrabble-tile {
+    position: relative;
+    width: 42px;
+    height: 42px;
+  }
+
+}
+
+/* ===== HERO CONTAINER CONTROL ===== */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+}
+
+.hero-panel {
+  max-width: 100%;
+  overflow: hidden;
+}
+      
     }
   </style>
 </head>
