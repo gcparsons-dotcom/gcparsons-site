@@ -13,10 +13,10 @@
       --muted:#b8afa4;
       --line:rgba(255,255,255,.08);
       --gold:#d7b37a;
-      --tile:#d7b37a;
       --tile-text:#2c241a;
       --shadow:0 20px 60px rgba(0,0,0,.45);
       --deep-shadow:0 30px 90px rgba(0,0,0,.68);
+      --hero-mobile-scale:0.37;
     }
 
     *{box-sizing:border-box}
@@ -155,12 +155,12 @@
 
     .hero-scene{
       position:relative;
-      min-height:620px;
+      min-height:640px;
       border-radius:24px;
       overflow:hidden;
       background:
         radial-gradient(circle at 50% 10%, rgba(255,255,255,.04), transparent 24%),
-        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.56)),
+        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.58)),
         linear-gradient(135deg, #1a1110 0%, #0d0a0a 45%, #060606 100%);
       border:1px solid rgba(255,255,255,.06);
       box-shadow:inset 0 0 80px rgba(0,0,0,.55);
@@ -202,7 +202,7 @@
     .scene-inner{
       position:relative;
       z-index:2;
-      min-height:620px;
+      min-height:640px;
       padding:34px 28px 28px;
     }
 
@@ -227,9 +227,16 @@
 
     .crossword{
       position:relative;
-      width:740px;
+      width:860px;
       max-width:100%;
-      height:420px;
+      height:470px;
+      margin:0 auto;
+    }
+
+    .crossword-inner{
+      position:relative;
+      width:860px;
+      height:470px;
       margin:0 auto;
     }
 
@@ -538,10 +545,6 @@
     @media (max-width:1060px){
       .books{grid-template-columns:repeat(2,1fr)}
       .hero-grid{grid-template-columns:1fr}
-      .crossword{
-        transform:scale(.92);
-        transform-origin:top center;
-      }
     }
 
     @media (max-width:768px){
@@ -566,7 +569,7 @@
       }
 
       .hero{
-        padding:34px 0 42px;
+        padding:30px 0 42px;
       }
 
       .hero-grid{
@@ -611,16 +614,17 @@
       }
 
       .crossword{
-        width:320px;
-        height:360px;
-        transform:none;
+        width:100%;
+        height:calc(470px * var(--hero-mobile-scale));
+        overflow:visible;
       }
 
-      .tile{
-        width:28px;
-        height:28px;
-        font-size:.72rem;
-        border-radius:6px;
+      .crossword-inner{
+        position:absolute;
+        left:50%;
+        top:0;
+        transform:translateX(-50%) scale(var(--hero-mobile-scale));
+        transform-origin:top center;
       }
 
       .desk-note{
@@ -629,7 +633,7 @@
         right:auto;
         bottom:auto;
         display:block;
-        margin-top:6px;
+        margin-top:10px;
       }
 
       .desk-quote{
@@ -757,74 +761,68 @@
             <div class="scene-tag">THE SYSTEM IS FLAWED</div>
 
             <div class="crossword" aria-hidden="true">
-              <div class="cross-guide"></div>
+              <div class="crossword-inner">
+                <div class="cross-guide"></div>
 
-              <!-- PSYCHOLOGICAL -->
-              <div class="tile" style="left:115px; top:58px;">P</div>
-              <div class="tile" style="left:161px; top:58px;">S</div>
-              <div class="tile" style="left:207px; top:58px;">Y</div>
-              <div class="tile" style="left:253px; top:58px;">C</div>
-              <div class="tile" style="left:299px; top:58px;">H</div>
-              <div class="tile" style="left:345px; top:58px;">O</div>
-              <div class="tile" style="left:391px; top:58px;">L</div>
-              <div class="tile" style="left:437px; top:58px;">O</div>
-              <div class="tile" style="left:483px; top:58px;">G</div>
-              <div class="tile" style="left:529px; top:58px;">I</div>
-              <div class="tile" style="left:575px; top:58px;">C</div>
-              <div class="tile" style="left:621px; top:58px;">A</div>
-              <div class="tile" style="left:667px; top:58px;">L</div>
+                <div class="tile" style="left:115px; top:58px;">P</div>
+                <div class="tile" style="left:161px; top:58px;">S</div>
+                <div class="tile" style="left:207px; top:58px;">Y</div>
+                <div class="tile" style="left:253px; top:58px;">C</div>
+                <div class="tile" style="left:299px; top:58px;">H</div>
+                <div class="tile" style="left:345px; top:58px;">O</div>
+                <div class="tile" style="left:391px; top:58px;">L</div>
+                <div class="tile" style="left:437px; top:58px;">O</div>
+                <div class="tile" style="left:483px; top:58px;">G</div>
+                <div class="tile" style="left:529px; top:58px;">I</div>
+                <div class="tile" style="left:575px; top:58px;">C</div>
+                <div class="tile" style="left:621px; top:58px;">A</div>
+                <div class="tile" style="left:667px; top:58px;">L</div>
 
-              <!-- THE vertical through H -->
-              <div class="tile" style="left:299px; top:12px;">T</div>
-              <div class="tile" style="left:299px; top:104px;">E</div>
+                <div class="tile" style="left:299px; top:12px;">T</div>
+                <div class="tile" style="left:299px; top:104px;">E</div>
 
-              <!-- SYSTEM vertical through S -->
-              <div class="tile" style="left:161px; top:104px;">Y</div>
-              <div class="tile" style="left:161px; top:150px;">S</div>
-              <div class="tile" style="left:161px; top:196px;">T</div>
-              <div class="tile" style="left:161px; top:242px;">E</div>
-              <div class="tile" style="left:161px; top:288px;">M</div>
+                <div class="tile" style="left:161px; top:104px;">Y</div>
+                <div class="tile" style="left:161px; top:150px;">S</div>
+                <div class="tile" style="left:161px; top:196px;">T</div>
+                <div class="tile" style="left:161px; top:242px;">E</div>
+                <div class="tile" style="left:161px; top:288px;">M</div>
 
-              <!-- OBSERVED -->
-              <div class="tile" style="left:23px;  top:242px;">O</div>
-              <div class="tile" style="left:69px;  top:242px;">B</div>
-              <div class="tile" style="left:115px; top:242px;">S</div>
-              <div class="tile" style="left:161px; top:242px;">E</div>
-              <div class="tile" style="left:207px; top:242px;">R</div>
-              <div class="tile" style="left:253px; top:242px;">V</div>
-              <div class="tile" style="left:299px; top:242px;">E</div>
-              <div class="tile" style="left:345px; top:242px;">D</div>
+                <div class="tile" style="left:23px;  top:242px;">O</div>
+                <div class="tile" style="left:69px;  top:242px;">B</div>
+                <div class="tile" style="left:115px; top:242px;">S</div>
+                <div class="tile" style="left:161px; top:242px;">E</div>
+                <div class="tile" style="left:207px; top:242px;">R</div>
+                <div class="tile" style="left:253px; top:242px;">V</div>
+                <div class="tile" style="left:299px; top:242px;">E</div>
+                <div class="tile" style="left:345px; top:242px;">D</div>
 
-              <!-- COGNITIVE vertical through I -->
-              <div class="tile" style="left:575px; top:104px;">O</div>
-              <div class="tile" style="left:575px; top:150px;">G</div>
-              <div class="tile" style="left:575px; top:196px;">N</div>
-              <div class="tile" style="left:575px; top:242px;">I</div>
-              <div class="tile" style="left:575px; top:288px;">T</div>
-              <div class="tile" style="left:575px; top:334px;">V</div>
-              <div class="tile" style="left:575px; top:380px;">E</div>
+                <div class="tile" style="left:575px; top:104px;">O</div>
+                <div class="tile" style="left:575px; top:150px;">G</div>
+                <div class="tile" style="left:575px; top:196px;">N</div>
+                <div class="tile" style="left:575px; top:242px;">I</div>
+                <div class="tile" style="left:575px; top:288px;">T</div>
+                <div class="tile" style="left:575px; top:334px;">V</div>
+                <div class="tile" style="left:575px; top:380px;">E</div>
 
-              <!-- FRAGMENT vertical -->
-              <div class="tile" style="left:483px; top:242px;">F</div>
-              <div class="tile" style="left:483px; top:288px;">R</div>
-              <div class="tile" style="left:483px; top:334px;">A</div>
-              <div class="tile" style="left:483px; top:380px;">M</div>
+                <div class="tile" style="left:483px; top:242px;">F</div>
+                <div class="tile" style="left:483px; top:288px;">R</div>
+                <div class="tile" style="left:483px; top:334px;">A</div>
+                <div class="tile" style="left:483px; top:380px;">M</div>
 
-              <!-- POSITIONS -->
-              <div class="tile" style="left:437px; top:334px;">P</div>
-              <div class="tile" style="left:483px; top:334px;">O</div>
-              <div class="tile" style="left:529px; top:334px;">S</div>
-              <div class="tile" style="left:575px; top:334px;">I</div>
-              <div class="tile" style="left:621px; top:334px;">T</div>
-              <div class="tile" style="left:667px; top:334px;">I</div>
-              <div class="tile" style="left:713px; top:334px;">O</div>
-              <div class="tile" style="left:759px; top:334px;">N</div>
-              <div class="tile" style="left:805px; top:334px;">S</div>
+                <div class="tile" style="left:437px; top:334px;">P</div>
+                <div class="tile" style="left:483px; top:334px;">O</div>
+                <div class="tile" style="left:529px; top:334px;">S</div>
+                <div class="tile" style="left:575px; top:334px;">I</div>
+                <div class="tile" style="left:621px; top:334px;">T</div>
+                <div class="tile" style="left:667px; top:334px;">I</div>
+                <div class="tile" style="left:713px; top:334px;">O</div>
+                <div class="tile" style="left:759px; top:334px;">N</div>
+                <div class="tile" style="left:805px; top:334px;">S</div>
 
-              <!-- FOUR vertical -->
-              <div class="tile" style="left:713px; top:288px;">F</div>
-              <div class="tile" style="left:713px; top:380px;">U</div>
-              <div class="tile" style="left:713px; top:426px;">R</div>
+                <div class="tile" style="left:713px; top:288px;">F</div>
+                <div class="tile" style="left:713px; top:380px;">U</div>
+                <div class="tile" style="left:713px; top:426px;">R</div>
+              </div>
             </div>
 
             <div class="desk-note">
