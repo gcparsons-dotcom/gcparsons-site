@@ -1,725 +1,11 @@
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>G. Curtis Parsons</title>
   <meta name="description" content="Official author site for G. Curtis Parsons." />
-  <style>
-    :root{
-      --bg:#050505;
-      --panel:#0d0d0e;
-      --panel-2:#111112;
-      --text:#ece8e2;
-      --muted:#b8afa4;
-      --line:rgba(255,255,255,.08);
-      --gold:#d7b37a;
-      --tile-text:#2c241a;
-      --shadow:0 18px 40px rgba(0,0,0,.38);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.03), transparent 30%),
-        linear-gradient(180deg,#090909 0%, #050505 100%);
-      color:var(--text);
-      font-family: Georgia, "Times New Roman", serif;
-      min-height:100vh;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-      border:0;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .wrap{
-      width:min(1180px, calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(5,5,5,.96);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .brand{
-      font-size:1.2rem;
-      font-weight:700;
-      letter-spacing:.03em;
-      white-space:nowrap;
-    }
-
-    .nav-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      align-items:center;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .nav-links a:hover{
-      color:var(--text);
-    }
-
-    .hero{
-      padding:64px 0 48px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:.92fr 1.08fr;
-      gap:34px;
-      align-items:start;
-    }
-
-    .eyebrow{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:.74rem;
-      margin-bottom:18px;
-    }
-
-    h1{
-      margin:0 0 18px;
-      font-size:clamp(2.5rem, 6vw, 4.8rem);
-      line-height:.95;
-      letter-spacing:.01em;
-    }
-
-    .hero-copy{
-      color:var(--muted);
-      font-size:1.03rem;
-      line-height:1.75;
-      max-width:680px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:28px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      font-size:.95rem;
-      transition:transform .18s ease, border-color .18s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:rgba(255,255,255,.16);
-    }
-
-    .btn-primary{
-      background:var(--text);
-      color:#111;
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.03);
-    }
-
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:18px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .hero-scene{
-      position:relative;
-      border-radius:22px;
-      overflow:hidden;
-      min-height:560px;
-      background:
-        linear-gradient(180deg, rgba(18,10,10,.18), rgba(0,0,0,.56)),
-        linear-gradient(135deg, #1a1110 0%, #0d0a0a 45%, #060606 100%);
-      border:1px solid rgba(255,255,255,.05);
-    }
-
-    .hero-scene::before{
-      content:"";
-      position:absolute;
-      inset:auto 0 0 0;
-      height:70%;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.36)),
-        linear-gradient(90deg,
-          rgba(89,53,37,.18) 0%,
-          rgba(67,39,28,.22) 18%,
-          rgba(94,58,41,.16) 36%,
-          rgba(74,45,32,.24) 56%,
-          rgba(86,51,36,.15) 76%,
-          rgba(64,38,27,.24) 100%
-        ),
-        linear-gradient(180deg, #3a241c 0%, #26160f 100%);
-      opacity:.96;
-      pointer-events:none;
-    }
-
-    .hero-scene::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.22)),
-        url("images/textures/paper-petals-master.png") center/cover no-repeat;
-      opacity:.24;
-      pointer-events:none;
-    }
-
-    .scene-inner{
-      position:relative;
-      z-index:2;
-      min-height:560px;
-      padding:28px 24px 24px;
-    }
-
-    .scene-tag{
-      text-align:center;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:.76rem;
-      font-weight:700;
-      margin-bottom:24px;
-    }
-
-    .crossword{
-      position:relative;
-      width:860px;
-      max-width:100%;
-      height:430px;
-      margin:0 auto;
-    }
-
-    .crossword-inner{
-      position:relative;
-      width:860px;
-      height:430px;
-      margin:0 auto;
-    }
-
-    .tile{
-      position:absolute;
-      width:46px;
-      height:46px;
-      border-radius:8px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(180deg, #e2c289 0%, #caa16b 100%);
-      color:var(--tile-text);
-      font-weight:700;
-      font-size:1rem;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.45),
-        inset 0 -7px 16px rgba(60,40,15,.15),
-        0 8px 18px rgba(0,0,0,.24);
-      overflow:hidden;
-    }
-
-    .tile::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 24% 22%, rgba(255,255,255,.35), transparent 18%),
-        linear-gradient(135deg, transparent 0 45%, rgba(80,55,25,.17) 47%, transparent 49% 100%),
-        linear-gradient(45deg, transparent 0 65%, rgba(90,60,28,.12) 67%, transparent 69% 100%);
-      opacity:.82;
-    }
-
-    .cross-guide{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, transparent 49.85%, rgba(255,255,255,.03) 50%, transparent 50.15%),
-        linear-gradient(180deg, transparent 49.85%, rgba(255,255,255,.03) 50%, transparent 50.15%);
-      pointer-events:none;
-      opacity:.35;
-    }
-
-    .desk-note{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:18px;
-    }
-
-    .desk-quote{
-      max-width:470px;
-      font-size:1rem;
-      line-height:1.68;
-      color:var(--text);
-    }
-
-    .rose-cluster{
-      position:relative;
-      width:180px;
-      height:150px;
-      flex:0 0 auto;
-    }
-
-    .rose{
-      position:absolute;
-      border-radius:50%;
-      background:
-        radial-gradient(circle at 34% 32%, rgba(255,255,255,.08), transparent 20%),
-        radial-gradient(circle at center, #7e0e20 0%, #5a0817 42%, #2c020b 75%, #130104 100%);
-      box-shadow:
-        inset 0 4px 10px rgba(255,255,255,.04),
-        inset 0 -12px 20px rgba(0,0,0,.35);
-    }
-
-    .rose.one{width:82px;height:82px;right:42px;bottom:38px}
-    .rose.two{width:58px;height:58px;right:8px;bottom:16px;opacity:.82}
-    .rose.three{width:40px;height:40px;right:96px;bottom:2px;opacity:.78}
-
-    .petal{
-      position:absolute;
-      background:linear-gradient(180deg, #8a1428 0%, #540916 100%);
-      border-radius:60% 40% 65% 35% / 55% 35% 65% 45%;
-      box-shadow:0 8px 18px rgba(0,0,0,.35);
-      opacity:.92;
-    }
-
-    .petal.a{width:22px;height:14px;right:122px;bottom:64px;transform:rotate(18deg)}
-    .petal.b{width:18px;height:12px;right:142px;bottom:36px;transform:rotate(-18deg)}
-    .petal.c{width:16px;height:11px;right:72px;bottom:4px;transform:rotate(28deg)}
-
-    .section{
-      padding:26px 0 56px;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:20px;
-      margin-bottom:22px;
-    }
-
-    h2{
-      margin:0;
-      font-size:clamp(1.8rem, 4vw, 2.6rem);
-    }
-
-    .section-note{
-      color:var(--muted);
-      max-width:600px;
-      line-height:1.65;
-    }
-
-    .books{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .book{
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      min-height:420px;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .cover{
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-      background:#101011;
-    }
-
-    .cover img{
-      width:100%;
-      height:255px;
-      object-fit:cover;
-    }
-
-    .cover::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.22) 55%, rgba(0,0,0,.68) 100%);
-      pointer-events:none;
-    }
-
-    .cover-title{
-      position:absolute;
-      left:18px;
-      bottom:16px;
-      right:18px;
-      z-index:2;
-      font-size:1.15rem;
-      line-height:1.1;
-      text-shadow:0 2px 20px rgba(0,0,0,.7);
-    }
-
-    .book-body{
-      padding:18px 18px 20px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      flex:1;
-    }
-
-    .book-kicker{
-      color:var(--muted);
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-    }
-
-    .book p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:.94rem;
-    }
-
-    .read-more{
-      margin-top:auto;
-      align-self:flex-start;
-      color:rgba(236,232,226,.46);
-      border-bottom:1px solid transparent;
-      font-size:.92rem;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .panel{
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .panel h3{
-      margin:0 0 14px;
-      font-size:1.45rem;
-    }
-
-    .panel p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .author-grid{
-      display:grid;
-      grid-template-columns:160px 1fr;
-      gap:18px;
-      align-items:start;
-    }
-
-    .author-photo{
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:#0d0d0e;
-    }
-
-    .author-photo img{
-      width:100%;
-      height:180px;
-      object-fit:cover;
-    }
-
-    .signals{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .signal{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px;
-      background:rgba(255,255,255,.02);
-    }
-
-    .signal strong{
-      display:block;
-      margin-bottom:8px;
-    }
-
-    .footer{
-      padding:0 0 42px;
-      color:rgba(236,232,226,.62);
-    }
-
-    .footer .panel{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    @media (max-width:1024px){
-      .hero-grid,
-      .books,
-      .two-col,
-      .signals,
-      .author-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding:40px 0 44px;
-      }
-
-      .hero-grid{
-        gap:24px;
-      }
-
-      .nav-inner{
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        min-height:auto;
-        padding:14px 0;
-      }
-
-      .brand{
-        white-space:normal;
-      }
-
-      .nav-links{
-        justify-content:center;
-        gap:14px 18px;
-      }
-
-      .hero-copy,
-      h1,
-      .eyebrow{
-        text-align:center;
-      }
-
-      .hero-actions{
-        justify-content:center;
-      }
-
-      .crossword{
-        width:100%;
-        height:210px;
-      }
-
-      .crossword-inner{
-        position:absolute;
-        left:50%;
-        top:0;
-        transform:translateX(-50%) scale(.48);
-        transform-origin:top center;
-      }
-
-      .desk-note{
-        position:relative;
-        left:auto;
-        right:auto;
-        bottom:auto;
-        display:block;
-        margin-top:10px;
-      }
-
-      .desk-quote{
-        max-width:none;
-        text-align:center;
-        font-size:.95rem;
-      }
-
-      .rose-cluster{
-        width:130px;
-        height:120px;
-        margin:14px auto 0;
-      }
-
-      .rose.one{width:60px;height:60px;right:30px;bottom:30px}
-      .rose.two{width:42px;height:42px;right:4px;bottom:10px}
-      .rose.three{width:30px;height:30px;right:68px;bottom:0}
-      .petal.a{width:16px;height:10px;right:84px;bottom:42px}
-      .petal.b{width:14px;height:9px;right:98px;bottom:24px}
-      .petal.c{width:12px;height:8px;right:46px;bottom:0}
-    }
-
-    @media (max-width:768px){
-      .wrap{
-        width:min(100%, calc(100% - 20px));
-      }
-
-      .hero-scene-shell{
-        padding:12px;
-      }
-
-      .scene-inner{
-        padding:18px 12px 18px;
-      }
-
-      .scene-tag{
-        font-size:.66rem;
-        margin-bottom:14px;
-      }
-
-      .crossword{
-        height:175px;
-      }
-
-      .crossword-inner{
-        transform:translateX(-50%) scale(var(--hero-mobile-scale));
-      }
-
-      h1{
-        font-size:clamp(2rem, 9vw, 3rem);
-      }
-
-      .hero-copy,
-      .book p,
-      .panel p{
-        font-size:.95rem;
-        line-height:1.62;
-      }
-
-      .section{
-        padding:18px 0 40px;
-      }
-
-      .section-head{
-        display:block;
-        margin-bottom:18px;
-      }
-
-      h2{
-        font-size:2rem;
-        margin-bottom:10px;
-      }
-
-      .cover img{
-        height:auto;
-        object-fit:contain;
-      }
-
-      .author-photo img{
-        height:auto;
-        max-height:360px;
-      }
-
-      /* ===== MOBILE HERO FIX ===== */
-
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero h1 {
-  font-size: clamp(1.8rem, 6vw, 3rem);
-  line-height: 1.1;
-  text-align: center;
-  padding: 0 12px;
-}
-
-.hero p {
-  text-align: center;
-  padding: 0 16px;
-}
-
-/* ===== SCRABBLE BOARD FIX ===== */
-
-.scrabble-board {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-/* DESKTOP keeps your layout */
-@media (min-width: 769px) {
-  .scrabble-tile {
-    position: absolute;
-  }
-}
-
-/* MOBILE switches to grid */
-@media (max-width: 768px) {
-
-  .scrabble-board {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    justify-items: center;
-    padding: 20px;
-  }
-
-  .scrabble-tile {
-    position: relative;
-    width: 42px;
-    height: 42px;
-  }
-
-}
-
-/* ===== HERO CONTAINER CONTROL ===== */
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 100%;
-}
-
-.hero-panel {
-  max-width: 100%;
-  overflow: hidden;
-}
-      
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
@@ -737,9 +23,9 @@
 
   <header class="hero">
     <div class="wrap hero-grid">
-      <section>
-        <div class="eyebrow">Literary Psychological Thriller</div>
-        <h1>Stories built to leave a mark after the page goes dark.</h1>
+      <section class="hero-copy-block">
+        <div class="hero-eyebrow">Literary Psychological Thriller</div>
+        <h1 class="hero-title">Stories built to leave a mark after the page goes dark.</h1>
         <div class="hero-copy">
           A cinematic author site for a four-book psychological thriller sequence built around fracture, perception, and the feeling of something happening just beyond explanation.
         </div>
@@ -749,78 +35,116 @@
         </div>
       </section>
 
-      <aside class="hero-scene-shell" aria-label="Creepy Scrabble Desk Hero">
+      <aside class="hero-card">
         <div class="hero-scene">
-          <div class="scene-inner">
-            <div class="scene-tag">THE SYSTEM IS FLAWED</div>
+          <div class="hero-scene-inner">
+            <div class="hero-tag">THE SYSTEM IS FLAWED</div>
 
-            <div class="crossword" aria-hidden="true">
-              <div class="crossword-inner">
-                <div class="cross-guide"></div>
+            <div class="crossword-desktop" aria-hidden="true">
+              <div class="tile" style="left:115px; top:58px;">P</div>
+              <div class="tile" style="left:161px; top:58px;">S</div>
+              <div class="tile" style="left:207px; top:58px;">Y</div>
+              <div class="tile" style="left:253px; top:58px;">C</div>
+              <div class="tile" style="left:299px; top:58px;">H</div>
+              <div class="tile" style="left:345px; top:58px;">O</div>
+              <div class="tile" style="left:391px; top:58px;">L</div>
+              <div class="tile" style="left:437px; top:58px;">O</div>
+              <div class="tile" style="left:483px; top:58px;">G</div>
+              <div class="tile" style="left:529px; top:58px;">I</div>
+              <div class="tile" style="left:575px; top:58px;">C</div>
+              <div class="tile" style="left:621px; top:58px;">A</div>
+              <div class="tile" style="left:667px; top:58px;">L</div>
 
-                <div class="tile" style="left:115px; top:58px;">P</div>
-                <div class="tile" style="left:161px; top:58px;">S</div>
-                <div class="tile" style="left:207px; top:58px;">Y</div>
-                <div class="tile" style="left:253px; top:58px;">C</div>
-                <div class="tile" style="left:299px; top:58px;">H</div>
-                <div class="tile" style="left:345px; top:58px;">O</div>
-                <div class="tile" style="left:391px; top:58px;">L</div>
-                <div class="tile" style="left:437px; top:58px;">O</div>
-                <div class="tile" style="left:483px; top:58px;">G</div>
-                <div class="tile" style="left:529px; top:58px;">I</div>
-                <div class="tile" style="left:575px; top:58px;">C</div>
-                <div class="tile" style="left:621px; top:58px;">A</div>
-                <div class="tile" style="left:667px; top:58px;">L</div>
+              <div class="tile" style="left:299px; top:12px;">T</div>
+              <div class="tile" style="left:299px; top:104px;">E</div>
 
-                <div class="tile" style="left:299px; top:12px;">T</div>
-                <div class="tile" style="left:299px; top:104px;">E</div>
+              <div class="tile" style="left:161px; top:104px;">Y</div>
+              <div class="tile" style="left:161px; top:150px;">S</div>
+              <div class="tile" style="left:161px; top:196px;">T</div>
+              <div class="tile" style="left:161px; top:242px;">E</div>
+              <div class="tile" style="left:161px; top:288px;">M</div>
 
-                <div class="tile" style="left:161px; top:104px;">Y</div>
-                <div class="tile" style="left:161px; top:150px;">S</div>
-                <div class="tile" style="left:161px; top:196px;">T</div>
-                <div class="tile" style="left:161px; top:242px;">E</div>
-                <div class="tile" style="left:161px; top:288px;">M</div>
+              <div class="tile" style="left:23px; top:242px;">O</div>
+              <div class="tile" style="left:69px; top:242px;">B</div>
+              <div class="tile" style="left:115px; top:242px;">S</div>
+              <div class="tile" style="left:161px; top:242px;">E</div>
+              <div class="tile" style="left:207px; top:242px;">R</div>
+              <div class="tile" style="left:253px; top:242px;">V</div>
+              <div class="tile" style="left:299px; top:242px;">E</div>
+              <div class="tile" style="left:345px; top:242px;">D</div>
 
-                <div class="tile" style="left:23px; top:242px;">O</div>
-                <div class="tile" style="left:69px; top:242px;">B</div>
-                <div class="tile" style="left:115px; top:242px;">S</div>
-                <div class="tile" style="left:161px; top:242px;">E</div>
-                <div class="tile" style="left:207px; top:242px;">R</div>
-                <div class="tile" style="left:253px; top:242px;">V</div>
-                <div class="tile" style="left:299px; top:242px;">E</div>
-                <div class="tile" style="left:345px; top:242px;">D</div>
+              <div class="tile" style="left:575px; top:104px;">O</div>
+              <div class="tile" style="left:575px; top:150px;">G</div>
+              <div class="tile" style="left:575px; top:196px;">N</div>
+              <div class="tile" style="left:575px; top:242px;">I</div>
+              <div class="tile" style="left:575px; top:288px;">T</div>
+              <div class="tile" style="left:575px; top:334px;">V</div>
+              <div class="tile" style="left:575px; top:380px;">E</div>
 
-                <div class="tile" style="left:575px; top:104px;">O</div>
-                <div class="tile" style="left:575px; top:150px;">G</div>
-                <div class="tile" style="left:575px; top:196px;">N</div>
-                <div class="tile" style="left:575px; top:242px;">I</div>
-                <div class="tile" style="left:575px; top:288px;">T</div>
-                <div class="tile" style="left:575px; top:334px;">V</div>
-                <div class="tile" style="left:575px; top:380px;">E</div>
+              <div class="tile" style="left:483px; top:242px;">F</div>
+              <div class="tile" style="left:483px; top:288px;">R</div>
+              <div class="tile" style="left:483px; top:334px;">A</div>
+              <div class="tile" style="left:483px; top:380px;">M</div>
 
-                <div class="tile" style="left:483px; top:242px;">F</div>
-                <div class="tile" style="left:483px; top:288px;">R</div>
-                <div class="tile" style="left:483px; top:334px;">A</div>
-                <div class="tile" style="left:483px; top:380px;">M</div>
+              <div class="tile" style="left:437px; top:334px;">P</div>
+              <div class="tile" style="left:483px; top:334px;">O</div>
+              <div class="tile" style="left:529px; top:334px;">S</div>
+              <div class="tile" style="left:575px; top:334px;">I</div>
+              <div class="tile" style="left:621px; top:334px;">T</div>
+              <div class="tile" style="left:667px; top:334px;">I</div>
+              <div class="tile" style="left:713px; top:334px;">O</div>
+              <div class="tile" style="left:759px; top:334px;">N</div>
+              <div class="tile" style="left:805px; top:334px;">S</div>
 
-                <div class="tile" style="left:437px; top:334px;">P</div>
-                <div class="tile" style="left:483px; top:334px;">O</div>
-                <div class="tile" style="left:529px; top:334px;">S</div>
-                <div class="tile" style="left:575px; top:334px;">I</div>
-                <div class="tile" style="left:621px; top:334px;">T</div>
-                <div class="tile" style="left:667px; top:334px;">I</div>
-                <div class="tile" style="left:713px; top:334px;">O</div>
-                <div class="tile" style="left:759px; top:334px;">N</div>
-                <div class="tile" style="left:805px; top:334px;">S</div>
-
-                <div class="tile" style="left:713px; top:288px;">F</div>
-                <div class="tile" style="left:713px; top:380px;">U</div>
-                <div class="tile" style="left:713px; top:426px;">R</div>
-              </div>
+              <div class="tile" style="left:713px; top:288px;">F</div>
+              <div class="tile" style="left:713px; top:380px;">U</div>
+              <div class="tile" style="left:713px; top:426px;">R</div>
             </div>
 
-            <div class="desk-note">
-              <div class="desk-quote">
+            <div class="crossword-mobile" aria-hidden="true">
+              <div class="tile">P</div>
+              <div class="tile">S</div>
+              <div class="tile">Y</div>
+              <div class="tile">C</div>
+              <div class="tile">H</div>
+              <div class="tile">O</div>
+              <div class="tile">L</div>
+              <div class="tile">O</div>
+              <div class="tile">G</div>
+              <div class="tile">I</div>
+              <div class="tile">C</div>
+              <div class="tile">A</div>
+              <div class="tile">L</div>
+              <div class="tile">S</div>
+              <div class="tile">Y</div>
+              <div class="tile">S</div>
+              <div class="tile">T</div>
+              <div class="tile">E</div>
+              <div class="tile">M</div>
+              <div class="tile">O</div>
+              <div class="tile">B</div>
+              <div class="tile">S</div>
+              <div class="tile">E</div>
+              <div class="tile">R</div>
+              <div class="tile">V</div>
+              <div class="tile">E</div>
+              <div class="tile">D</div>
+              <div class="tile">F</div>
+              <div class="tile">R</div>
+              <div class="tile">A</div>
+              <div class="tile">G</div>
+              <div class="tile">M</div>
+              <div class="tile">E</div>
+              <div class="tile">N</div>
+              <div class="tile">T</div>
+              <div class="tile">F</div>
+              <div class="tile">O</div>
+              <div class="tile">U</div>
+              <div class="tile">R</div>
+            </div>
+
+            <div class="hero-bottom">
+              <div class="hero-quote">
                 “The reader doesn’t need to know what happened. They need to feel that something did.”
               </div>
 
@@ -845,20 +169,20 @@
         <div class="section-head">
           <div><h2>Books</h2></div>
           <div class="section-note">
-            The covers are wired using your current covers naming structure.
+            A four-book literary psychological thriller sequence built around fracture, perception, and the pressure of implication.
           </div>
         </div>
 
         <div class="books">
           <article class="book">
             <div class="cover">
-              <img src="images/covers/ryans-calling-cvr.png" alt="Ryan's Calling cover" />
+              <img src="images/covers/ryans-calling-cvr.png" alt="Ryan’s Calling cover" />
               <div class="cover-title">Ryan’s Calling</div>
             </div>
             <div class="book-body">
               <div class="book-kicker">Book One</div>
               <p>Immediate, unsettling, and built without reflective distance. The story moves in real time and lets the unease arrive before the explanation ever can.</p>
-              <a class="read-more" href="#contact">Read more</a>
+              <a class="read-more" href="pages/ryans-calling.html">Read more</a>
             </div>
           </article>
 
@@ -870,31 +194,31 @@
             <div class="book-body">
               <div class="book-kicker">Book Two</div>
               <p>Ordered, analytical, and evidence-driven. Structure becomes pressure as the fragments begin forming a pattern that refuses to remain contained.</p>
-              <a class="read-more" href="#contact">Read more</a>
+              <a class="read-more" href="pages/pieces.html">Read more</a>
             </div>
           </article>
 
           <article class="book">
             <div class="cover">
-              <img src="images/covers/out-here-monsters.png" alt="Out Here, Monsters cover" />
+              <img src="images/covers/out-here-monsters-cvr.png" alt="Out Here, Monsters cover" />
               <div class="cover-title">Out Here, Monsters</div>
             </div>
             <div class="book-body">
               <div class="book-kicker">Book Three</div>
               <p>Reflective, interpretive, and emotionally reconstructed. Silence can’t hide everything, and absence becomes part of the story being told.</p>
-              <a class="read-more" href="#contact">Read more</a>
+              <a class="read-more" href="pages/out-here-monsters.html">Read more</a>
             </div>
           </article>
 
           <article class="book">
             <div class="cover">
-              <img src="images/covers/rubys-roses-cvr.png" alt="Ruby's Roses cover" />
+              <img src="images/covers/rubys-roses-cvr.png" alt="Ruby’s Roses cover" />
               <div class="cover-title">Ruby’s Roses</div>
             </div>
             <div class="book-body">
               <div class="book-kicker">Book Four</div>
               <p>Fragmented, weighted, and existential. The final book turns toward implication, collapse, and the emotional cost of meaning that refuses to settle.</p>
-              <a class="read-more" href="#contact">Read more</a>
+              <a class="read-more" href="pages/rubys-roses.html">Read more</a>
             </div>
           </article>
         </div>
@@ -909,9 +233,18 @@
             Four books. Four consciousness models. One underlying reality approached from different angles: real-time system processing, analytical reconstruction, interpretive emotional reconstruction, and internal collapse through weight and meaning.
           </p>
           <div class="signals">
-            <div class="signal"><strong>Real Time</strong>Immediate unease without explanation.</div>
-            <div class="signal"><strong>Reconstruction</strong>Order, evidence, and pattern pressure.</div>
-            <div class="signal"><strong>Collapse</strong>Meaning carries more weight than event.</div>
+            <div class="signal">
+              <strong>Real Time</strong>
+              Immediate unease without explanation.
+            </div>
+            <div class="signal">
+              <strong>Reconstruction</strong>
+              Order, evidence, and pattern pressure.
+            </div>
+            <div class="signal">
+              <strong>Collapse</strong>
+              Meaning carries more weight than event.
+            </div>
           </div>
         </div>
 
@@ -922,7 +255,7 @@
               <img src="images/profile/author.png" alt="Author portrait" />
             </div>
             <p>
-              G. Curtis Parsons writes cinematic literary psychological thrillers designed to privilege tone, pressure, and aftermath over clean explanation. This homepage is the live public layer of SYS NODE and is structured to evolve into the full author platform.
+              G. Curtis Parsons writes cinematic literary psychological thrillers designed to privilege tone, pressure, and aftermath over clean explanation. This public site is the outward-facing layer of a larger creative system and is structured to grow with the work.
             </p>
           </div>
         </div>
